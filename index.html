@@ -1,0 +1,106 @@
+<head>
+    <link href="css/foundation.min.css" type="text/css" rel="stylesheet">
+    <script src="js/foundation.min.js"></script>
+    <script src="jquery-1.11.0.min.js" type="application/javascript"></script>
+<style>
+.image{
+    margin:20px 100px;
+    border:2px grey solid;
+    width:500px;
+    float:right;
+}
+    .counter
+    {
+        float:left;
+        width:100px;
+        margin-top: 20px;
+
+
+    }
+    .header
+    {
+        background: #6675a9;
+        color: #fdfdfd;
+        min-height: 100px;
+        margin:0px auto;
+        text-align: center;
+    }
+    #counter
+    {
+        width:200px;
+        height:200px;
+        margin-left: 50px;
+        float:left;
+     }
+
+</style>
+</head>
+<body>
+<h1 class="header">
+    Chidya Udd..
+    </h1>
+    <div id="counter" class="counter"></div>
+    <div id="refresh" class="counter"><a href="index.html">Refresh</a> </div>
+    <div id="images" class="image"></div>
+<!--input type="button" class="button large" id="i"/-->
+<input type="button" value="0" class="button large alert" value="0" id="btn"/>
+<script>
+    $(document).ready(function() {
+        // var score=0;
+        var val, c,random,check,p;
+        c=new Array("fly1","no1","fly2","no2","fly3","no3","fly4","no4","fly5","fly6","fly7");
+        var i=0;
+        check = new Array (38,40,38,40,38,40,38,40,38,38,38);
+        var time=setInterval(function()
+
+        {
+            val=Math.floor(Math.random()*c.length);
+            random = c[val];
+            p = document.getElementById("images");
+            $("#images").fadeIn(100);
+            p.innerHTML='<img src="./img/'+random+'.jpg" width=500px height=500px>';
+                       i=1;
+            
+            document.getElementById("i").value=i;
+        },1200);
+
+         $(document).keyup(function(e)
+            {
+            
+
+                if (e.keyCode == check[val])
+                {
+                    var score = parseInt(document.getElementById("btn").value);
+                            if(i>0)
+                            {
+                                ++score;
+                                --i;
+								document.body.style.backgroundColor="lightgreen";
+                            }
+
+                    document.getElementById("btn").value=score;
+
+                }
+
+
+                else
+                {
+                clearInterval(time);
+				document.body.style.backgroundColor="#e08478";
+
+                    alert("Game Over");
+					
+                }
+           
+
+            });
+
+
+        }
+
+
+
+
+    );
+</script>
+</body>
